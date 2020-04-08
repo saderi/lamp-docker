@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+    web:
+        build:
+            context: ./nginx
+        image: nginx:test
+        volumes:
+            - ./html:/var/www/html
+        ports:
+            - "80:80"
+
+    php:
+        build:
+            context: ./php
+        image: php-lpm:test01
+        volumes:
+            - ./html:/var/www/html
+
+    mysql:
+        image: mysql:5.7
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        restart: always
+
+volumes:
+    mysql:
