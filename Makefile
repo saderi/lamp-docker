@@ -12,7 +12,7 @@ build-php:
 	docker-compose build php
 
 up:
-	docker-compose -p lamp -f docker-compose.yml up -d
+	docker-compose -p lamp -f docker-compose.yaml up -d
 
 down:
 	docker-compose -p lamp down
